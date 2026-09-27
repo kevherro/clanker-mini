@@ -75,6 +75,18 @@ evidence. Check the requested destination and completeness; stale or unrelated
 artifacts do not count. Report verified, partial, failed, or unverified acceptance
 with the supporting observations. Do not repair during an audit unless authorized.
 
+## Compute
+
+Use `clanker-compute` when available; it owns placement and remote resource
+lifecycle. Assess aggregate demand before heavy execution, including overlapping
+workers and scratch/output storage. Prefer bounded local work when it fits.
+
+If the companion is absent, reduce concurrency or workload size within available
+capacity, or use an established remote runner whose authorization, cost bounds,
+input identity, and independent cleanup are already verified. Otherwise prepare
+a remote plan and report the missing controls. Do not invent paid provisioning
+commands or equate a connected account with unlimited spending authority.
+
 ## Unattended
 
 1. Establish the finish condition, existing authority, resource/time bounds, and

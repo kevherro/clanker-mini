@@ -42,6 +42,7 @@ the applicable investigation, fix, build, or refactor route.
 | Simplify structure while preserving behavior | Refactor | No operational skill required unless runtime evidence is needed |
 | Recover a stalled or contradictory run | Operate | `clanker-run-triage` for diagnosis, effects, and bounded recovery |
 | Audit an autonomous completion claim | Verify | `clanker-verify-outcome` for acceptance and actual destination evidence |
+| Heavy work may exceed local resources, or needs remote compute | Compute | `clanker-compute` for placement, cost bounds, execution, and cleanup |
 | Keep working while the user steps away | Unattended | The companion needed by the current unit, not every skill |
 
 Resolve companions by name through the current skill catalog and read their
@@ -49,6 +50,12 @@ reported paths. Do not guess another machine's skill directories. If a companion
 is unavailable, use the built-in route and name any missing capability or evidence;
 do not install dependencies or abandon ordinary engineering work just to fill a
 skill catalog. A single focused request can go straight to its companion.
+
+Before a heavy build, data job, or wider worker fan-out, assess aggregate local
+CPU, memory, disk, and accelerator demand. Preserve machine responsiveness and
+route capacity problems through Compute before starting the oversized workload.
+Use fewer workers when that is sufficient; connected cloud credentials alone
+are not an offloading policy.
 
 ## Engineering principles
 
