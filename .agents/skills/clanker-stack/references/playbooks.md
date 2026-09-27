@@ -87,6 +87,44 @@ input identity, and independent cleanup are already verified. Otherwise prepare
 a remote plan and report the missing controls. Do not invent paid provisioning
 commands or equate a connected account with unlimited spending authority.
 
+## Environment
+
+Use `clanker-environment` when available. Otherwise derive dependencies and
+services from the target's actual manifests, isolate task-owned state, record the
+source/toolchain/input identity, and run a representative smoke check in the same
+environment that will do the work. Preserve user changes and existing services.
+Missing compute, credentials, or a platform-specific dependency remain explicit
+requirements; an environment that merely starts is not ready evidence.
+
+## Continuation
+
+Use `clanker-continuation` when available. Otherwise persist the task identity,
+finish condition, current authorization, deadline, evidence, unresolved effects,
+and next step in the existing runtime. Register through a documented scheduler
+or event mechanism and verify its actual target and registration. A checkpoint
+does not schedule execution. On wake, claim ownership and reconcile live state
+before replaying work; retire the task-owned wake when finished or cancelled.
+Without a working wake mechanism, continue in-session and report the limitation.
+
+## API capacity
+
+Use `clanker-api-capacity` when available. Otherwise inspect the actual request
+interface, provider errors, and aggregate queue demand. Separate temporary
+throttling from exhausted quota or invalid credentials. Apply supported pacing
+and bounded retries only for safe or genuinely idempotent operations. Preserve
+the task deadline and retry budget, and reconcile requests with uncertain effects.
+Additional VMs do not increase provider account limits.
+
+## Release
+
+Use `clanker-release` when available. Otherwise bind the tested artifact to the
+authorized target, inspect compatibility and a usable recovery path, and prepare
+the concrete release. Existing publish/deploy authority is sufficient; missing
+authority does not block preparation. Reconcile an uncertain prior publish before
+retrying. After an authorized release, verify the exact version and user-facing
+behavior at the destination. A submitted deployment is not a verified release;
+rollback is valid only when the resulting code and data remain compatible.
+
 ## Unattended
 
 1. Establish the finish condition, existing authority, resource/time bounds, and
@@ -100,8 +138,8 @@ commands or equate a connected account with unlimited spending authority.
 4. On a repeated failure without new evidence, change the investigation or stop
    that path. Continue independent work when useful. Honor the task's budgets and
    stop when the finish condition holds or the stated stop rule fires.
-5. Use a documented wake or continuation mechanism only when available and within
-   the user's request. Without one, work in the active session and report what
-   remains; never promise work will continue after execution ends.
+5. Use the Continuation route when work must resume later, within the user's
+   request. Without a documented wake mechanism, work in the active session and
+   report what remains; never promise work will continue after execution ends.
 6. At exit, leave a clear result or handoff with completed requirements, evidence,
    remaining work, and the reason for stopping. Do not mark uncertain work complete.

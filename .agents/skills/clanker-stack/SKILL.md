@@ -43,6 +43,10 @@ the applicable investigation, fix, build, or refactor route.
 | Recover a stalled or contradictory run | Operate | `clanker-run-triage` for diagnosis, effects, and bounded recovery |
 | Audit an autonomous completion claim | Verify | `clanker-verify-outcome` for acceptance and actual destination evidence |
 | Heavy work may exceed local resources, or needs remote compute | Compute | `clanker-compute` for placement, cost bounds, execution, and cleanup |
+| Prepare isolated dependencies, services, or fixtures | Environment | `clanker-environment` for reproducible setup and a smoke check |
+| Resume later on a timer or event | Continuation | `clanker-continuation` for a verified wake and durable handoff |
+| A request queue hits API rate, token, or concurrency limits | API capacity | `clanker-api-capacity` for diagnosis and bounded request flow |
+| Package, publish, deploy, or roll back an authorized release | Release | `clanker-release` for exact artifact identity and destination checks |
 | Keep working while the user steps away | Unattended | The companion needed by the current unit, not every skill |
 
 Resolve companions by name through the current skill catalog and read their
@@ -50,6 +54,13 @@ reported paths. Do not guess another machine's skill directories. If a companion
 is unavailable, use the built-in route and name any missing capability or evidence;
 do not install dependencies or abandon ordinary engineering work just to fill a
 skill catalog. A single focused request can go straight to its companion.
+
+Use the target system's authoritative runtime for checkpoints, claims, artifacts,
+and reservations. When operating from a clanker-mini checkout that includes
+`OPERATIONS.md` and `clanker_ops`, read that contract before choosing its optional
+local toolkit. It supports cooperating processes sharing one local store; do not
+create a second authority alongside an existing runner. Installing a skill alone
+does not install this toolkit, a scheduler, or a cloud adapter.
 
 Before a heavy build, data job, or wider worker fan-out, assess aggregate local
 CPU, memory, disk, and accelerator demand. Preserve machine responsiveness and
